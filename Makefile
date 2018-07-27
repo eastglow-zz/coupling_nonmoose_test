@@ -43,6 +43,12 @@ POROUS_FLOW         := no
 
 include $(MOOSE_DIR)/modules/modules.mk
 ###############################################################################
+#External non-MOOSE shared library linking - not necessary
+#extlibpath          :=$(PWD)/my_external_app/static/lib
+#extheaderpath       :=$(PWD)/my_external_app/static/include
+#ADDITIONAL_DEPEND_LIBS    += $(extlibpath)/wrapper.so
+#ADDITIONAL_INCLUDES:= -I$(extheaderpath)
+###############################################################################
 
 # dep apps
 APPLICATION_DIR    := $(CURDIR)
