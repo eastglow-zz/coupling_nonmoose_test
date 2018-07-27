@@ -1,11 +1,11 @@
 coupling_nonmoose_test
 =====
 
-"Fork coupling_nonmoose_test" to create a new MOOSE-based application.\
+"Fork coupling_nonmoose_test" to create a new MOOSE-based application.
 
-For more information see: [http://mooseframework.org/create-an-app/](http://mooseframework.org/create-an-app/)\
+For more information see: [http://mooseframework.org/create-an-app/](http://mooseframework.org/create-an-app/)
 
-This MOOSE application calls a function from the external library which can be loaded dynamically.\
+This MOOSE application calls a function from the external library which can be loaded dynamically.
 
 The function in the external library prints out integers from 1 to 10.\
 The function was built in a static library; ./my_external_app/static/lib/libfunc.arcv.a\
