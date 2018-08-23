@@ -2,10 +2,13 @@
 headerpath=$(PWD)/include
 srcpath=$(PWD)/src
 libpath=$(PWD)/lib
+CXX=g++
 
 #Wrpper dynamic library linked with the static library
 wrapper.so: $(srcpath)/wrapper.cpp $(libpath)/libfunc_arcv.a
-	$(CXX) $(CXXFLAGS) -shared -o $(libpath)/wrapper.so $(srcpath)/wrapper.cpp $(libpath)/libfunc_arcv.a -I$(headerpath)
+#	$(CXX) $(CXXFLAGS) -shared -o $(libpath)/wrapper.so $(srcpath)/wrapper.cpp $(libpath)/libfunc_arcv.a -I$(headerpath)
+#	$(CXX) $(CXXFLAGS) -Wall -fPIC -o $(libpath)/wrapper.so $(srcpath)/wrapper.cpp $(libpath)/libfunc_arcv.a -I$(headerpath)
+	$(CXX) -shared -fPIC -o $(libpath)/wrapper.so $(srcpath)/wrapper.cpp -I$(headerpath) -L$(libpath) -lfunc_arcv
 
 #Compiling the static library containing the functions to use
 $(libpath)/libfunc_arcv.a: print_one_to_ten.o

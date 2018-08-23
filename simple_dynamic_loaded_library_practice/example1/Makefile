@@ -4,12 +4,13 @@
 #
 # Copyright 2002-2006 Aaron Isotton <aaron@isotton.com>
 # Licensed under the GNU GPL.
-
+CXX=g++
 example1: main.cpp hello.so
 	$(CXX) $(CXXFLAGS) -o example1 main.cpp -ldl
 
 hello.so: hello.cpp
-	$(CXX) $(CXXFLAGS) -shared -o hello.so hello.cpp
+#	$(CXX) $(CXXFLAGS) -shared -o hello.so hello.cpp
+	$(CXX) $(CXXFLAGS) -fPIC -nostartfiles -o hello.so hello.cpp
 
 clean:
 	rm -f example1 hello.so

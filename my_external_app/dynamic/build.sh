@@ -1,0 +1,2 @@
+mkdir lib
+make

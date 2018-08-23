@@ -7,6 +7,8 @@
 
 #example1: main.cpp hello.so
 #	$(CXX) $(CXXFLAGS) -o example1 main.cpp -ldl
+
+CXX=g++
 headerpath=$(PWD)/include
 
 mytryapp: clientapp.cpp wrapper.so

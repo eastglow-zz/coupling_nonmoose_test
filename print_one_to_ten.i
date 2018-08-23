@@ -11,7 +11,7 @@
   type = MyExecutioner
   [./TimeStepper]
     type = MyTimeStepper
-    library_path_name ='./my_external_app/static/lib/wrapper.so'
+    library_path_name ='./my_external_app/dynamic/mylibs/wrapper.so'
     function_name = 'wrap_print_one_to_ten'
   [../]
   end_time = 10
