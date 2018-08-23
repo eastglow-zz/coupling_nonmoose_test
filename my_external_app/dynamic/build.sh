@@ -1,2 +1,2 @@
-mkdir lib
+mkdir mylibs
 make
