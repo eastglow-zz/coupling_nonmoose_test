@@ -12,7 +12,7 @@ $(libpath)/libfunc_arcv.a: print_one_to_ten.o
 	ar rcv $(libpath)/libfunc_arcv.a print_one_to_ten.o
 
 print_one_to_ten.o: $(srcpath)/print_one_to_ten.cpp
-	$(CXX) $(CXXFLAGS) -c $(srcpath)/print_one_to_ten.cpp
+	$(CXX) $(CXXFLAGS) -c $(srcpath)/print_one_to_ten.cpp -I$(headerpath)
 
 clean:
 	rm -f myextapp $(libpath)/wrapper.so $(libpath)/libfunc_arcv.a ./*.o
