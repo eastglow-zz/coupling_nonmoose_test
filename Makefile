@@ -45,9 +45,9 @@ include $(MOOSE_DIR)/modules/modules.mk
 ###############################################################################
 #External non-MOOSE shared library linking - not necessary
 #extlibpath          :=$(PWD)/my_external_app/static/lib
-#extheaderpath       :=$(PWD)/my_external_app/static/include
+extheaderpath       :=$(PWD)/my_external_app/diffu_eqn/include
 #ADDITIONAL_DEPEND_LIBS    += $(extlibpath)/wrapper.so
-#ADDITIONAL_INCLUDES:= -I$(extheaderpath)
+ADDITIONAL_INCLUDES:= -I$(extheaderpath)
 ###############################################################################
 
 # dep apps

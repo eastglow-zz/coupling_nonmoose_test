@@ -4,11 +4,13 @@
 #include "ModulesApp.h"
 #include "MooseSyntax.h"
 
-// My custom Executioner
+// My custom Executioners
 #include "MyExecutioner.h"
+#include "MyDiffuExecutioner.h"
 
-// My custom TimeStepper
+// My custom TimeSteppers
 #include "MyTimeStepper.h"
+#include "MyDiffuTimeStepper.h"
 
 template <>
 InputParameters
@@ -46,11 +48,13 @@ coupling_nonmoose_testApp::registerObjects(Factory & factory)
 {
     Registry::registerObjectsTo(factory, {"coupling_nonmoose_testApp"});
 
-    //Registering Myexecutioner
+    //Registering My custom executioners
     registerExecutioner(MyExecutioner);
+    registerExecutioner(MyDiffuExecutioner);
 
-    //Registering Mytimestepper
+    //Registering My custom timesteppers
     registerTimeStepper(MyTimeStepper);
+    registerTimeStepper(MyDiffuTimeStepper);
 }
 
 void
