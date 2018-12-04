@@ -102,13 +102,13 @@ MyDiffuTimeStepper::step()
     mdp.dx = 0.5;
     mdp.nghost = 1;
     mdp.iLower = 1;
-    mdp.iUpper = 21;
+    mdp.iUpper = 11;
     mdp.numdata = 2 * mdp.nghost + mdp.iUpper - mdp.iLower + 1;
     mdp.iboundaryL = mdp.iLower - mdp.nghost;
     mdp.iboundaryU = mdp.iUpper + mdp.nghost;
     mdp.DiffCoef = 1.0;
-    mdp.bc_Lval_Dirichlet = 2.0;
-    mdp.bc_Uval_Dirichlet = 0.0;
+    mdp.bc_Lval_Dirichlet = 1.0;
+    mdp.bc_Uval_Dirichlet = -1.0;
 
     double *mdp_data;
     mdp_data = new double[mdp.numdata];

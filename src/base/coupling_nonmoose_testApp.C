@@ -23,7 +23,9 @@ validParams<coupling_nonmoose_testApp>()
 coupling_nonmoose_testApp::coupling_nonmoose_testApp(InputParameters parameters) : MooseApp(parameters)
 {
   Moose::registerObjects(_factory);
+  // Moose::registerAll(_factory);
   ModulesApp::registerObjects(_factory);
+  // ModulesApp::registerAll(_factory);
   coupling_nonmoose_testApp::registerObjects(_factory);
 
   Moose::associateSyntax(_syntax, _action_factory);
@@ -55,6 +57,9 @@ coupling_nonmoose_testApp::registerObjects(Factory & factory)
     //Registering My custom timesteppers
     registerTimeStepper(MyTimeStepper);
     registerTimeStepper(MyDiffuTimeStepper);
+
+    //Registering ExternalSpatialData
+    //registerObjects(ExternalSpatialData);
 }
 
 void

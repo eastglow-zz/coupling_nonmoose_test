@@ -1,0 +1,65 @@
+#include "coupling_nonmoose_testApp.h"
+#include "Moose.h"
+#include "AppFactory.h"
+#include "ModulesApp.h"
+#include "MooseSyntax.h"
+
+// My custom Executioners
+#include "MyExecutioner.h"
+#include "MyDiffuExecutioner.h"
+
+// My custom TimeSteppers
+#include "MyTimeStepper.h"
+#include "MyDiffuTimeStepper.h"
+
+template <>
+InputParameters
+validParams<coupling_nonmoose_testApp>()
+{
+  InputParameters params = validParams<MooseApp>();
+  return params;
+}
+
+coupling_nonmoose_testApp::coupling_nonmoose_testApp(InputParameters parameters) : MooseApp(parameters)
+{
+  coupling_nonmoose_testApp::registerAll(_factory, _action_factory, _syntax);
+}
+
+coupling_nonmoose_testApp::~coupling_nonmoose_testApp() {}
+
+void
+coupling_nonmoose_testApp::registerAll(Factory & f, ActionFactory & af, Syntax & s)
+{
+  ModulesApp::registerAll(f, af, s);
+  Registry::registerObjectsTo(f, {"coupling_nonmoose_testApp"});
+  Registry::registerActionsTo(af, {"coupling_nonmoose_testApp"});
+
+  /* register custom execute flags, action syntax, etc. here */
+  //Registering My custom executioners
+  registerExecutioner(MyExecutioner);
+  registerExecutioner(MyDiffuExecutioner);
+  //
+  // //Registering My custom timesteppers
+  registerTimeStepper(MyTimeStepper);
+  registerTimeStepper(MyDiffuTimeStepper);
+}
+
+void
+coupling_nonmoose_testApp::registerApps()
+{
+  registerApp(coupling_nonmoose_testApp);
+}
+
+/***************************************************************************************************
+ *********************** Dynamic Library Entry Points - DO NOT MODIFY ******************************
+ **************************************************************************************************/
+extern "C" void
+coupling_nonmoose_testApp__registerAll(Factory & f, ActionFactory & af, Syntax & s)
+{
+  coupling_nonmoose_testApp::registerAll(f, af, s);
+}
+extern "C" void
+coupling_nonmoose_testApp__registerApps()
+{
+  coupling_nonmoose_testApp::registerApps();
+}

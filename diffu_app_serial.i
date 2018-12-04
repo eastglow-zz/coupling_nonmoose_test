@@ -20,7 +20,7 @@
     dt = 0.5
     library_path_name ='./my_external_app/diffu_eqn/mylib/wrapper_diffu_eqn_ser.so'
   [../]
-  end_time = 2
+  end_time = 1
 []
 [Problem]
   kernel_coverage_check = false
