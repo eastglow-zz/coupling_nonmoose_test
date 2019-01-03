@@ -11,12 +11,24 @@
 [AuxVariables]
   [./Auxv]
   [../]
+  [./var_to_extapp]
+  [../]
 []
 [ICs]
   [./Init_Aux_const]
     type = ConstantIC
     variable = Auxv
     value = 0
+  [../]
+  [./IC_Aux_to_ext]
+    type = BoundingBoxIC
+    variable = var_to_extapp
+    inside = 1
+    outside = 0
+    x1 = 5
+    x2 = 6
+    y1 = -0.1
+    y2 = 0.1
   [../]
 []
 
@@ -47,6 +59,7 @@
     nx = 21
     xmax = 10
     variable = Auxv
+    variable_to_extapp = var_to_extapp
     library_path_name ='./my_external_app/diffu_eqn/mylib/wrapper_diffu_eqn_ser.so'
   [../]
 []

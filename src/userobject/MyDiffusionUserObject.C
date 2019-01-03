@@ -33,6 +33,7 @@ validParams<MyDiffusionUserObject>()
   params.addParam<Real>("ymax", 1.0, "Upper Y Coordinate of the generated mesh");
   params.addParam<Real>("zmax", 1.0, "Upper Z Coordinate of the generated mesh");
   params.addRequiredCoupledVar("variable", "The name of the variable that this object operates on");
+  params.addRequiredCoupledVar("variable_to_extapp", "The name of the variable to pass to the external application");
   params.addParam<std::string>("library_path_name",
                                "default",
                                "Name with the path for the dynamic library to load");
@@ -61,6 +62,7 @@ MyDiffusionUserObject::MyDiffusionUserObject(const InputParameters & parameters)
   _zmax(getParam<Real>("zmax")),
   _var(*mooseVariable()),
   _u(_var.dofValues()),
+  _v(coupledValue("variable_to_extapp")),
   _ext_lib_path_name(getParam<std::string>("library_path_name"))
 {
   std::cout<<"Initialization of MyDiffusionUserObject"<<std::endl;
@@ -131,6 +133,7 @@ MyDiffusionUserObject::execute()
 
   // Initializing _ext_data with the AuxVariable value; _u[0]
   _ext_data[ii] = _u[0];
+  // _ext_data[ii] = _v[0];
 
 }
 
